@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Достопримечатьльности
+{% endblock title %}
+
+{% block  content %}
+<div class="container py-5">
+    <h1>Достопримечатьльности</h1>                        
+    <hr>
+    {% for post in posts%}
+    <article>
+        <h2>{{post.name}}</h2>
+        <ul>
+          <li>
+            Место: {{post.location}}              
+          </li>
+          <li>
+            Дата: {{post.date}}
+          </li>
+          <li>
+            Категория: <a href="{% url 'posts:category_posts' post.category %}">{{post.category}}</a>
+          </li>
+        </ul>          
+        <!-- Первые 10 слов -->
+        <p>
+          {{post.text|truncatewords:10}}
+        </p>
+        <a href="{% url 'posts:post_detail' post.id %}">Читать полный текст</a>
+      </article>
+        {% comment %} {{post.id}}
+        {{post.name}}
+        {{post.location}}
+        {{post.date}}
+        {{post.category}}
+        {{post.text}} {% endcomment %}
+    <hr>
+    {% endfor %}
+</div>
+{% endblock  %}

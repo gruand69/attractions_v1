@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}
-  Публикации в категории «{{ category.title }}»
+  Публикации автора «{{ author.username }}»
 {% endblock %}
 {% block content %}
-<h1>Публикации в категории «{{ category.title }}»</h1>
-<p class="mb-5">{{ category.description }}</p>
+<h1>Публикации автора «{{ author.username }}»</h1>
+{% comment %} <p class="mb-5">{{ category.description }}</p> {% endcomment %}
 {% for post in post_list %}
   <article class="mb-5">  
     {% include "includes/post_card.html" %}

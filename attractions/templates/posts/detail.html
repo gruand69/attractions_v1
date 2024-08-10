@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{ post.title }} | {% if post.location %}Город: {{ post.location.town }} |{% endif %} {{ post.pub_date|date:"d E Y" }}
+{% endblock %}
+{% block content %}
+  <article>
+    <p>{{ post.pub_date|date:"d E Y" }} | {% if post.location %}Город: {% include "includes/location_link.html" %}{% else %}Город на планете Земля{% endif %}<br>
+      <small>От автора @{% include "includes/author_link.html" %} в категории {% include "includes/category_link.html" %}</small></p>
+      <img src="{% static post.image %}" alt="Нет картинки">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.text|linebreaksbr }}</p>
+  </article> 
+{% endblock %}

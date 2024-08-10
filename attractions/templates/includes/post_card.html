@@ -1,0 +1,18 @@
+{% load static %}
+<div class="card" style="width: 40rem;">
+  <div class="card-body">
+    <img src="{% static post.image %}" alt="Нет картинки">
+    <h5 class="card-title">{{ post.title }}</h5>
+    {% comment %} <img src="{% static '{{ post.image }}' %}" width="30" height="30" class="d-inline-block align-top" alt="Нет картинки"> {% endcomment %}
+    <h6 class="card-subtitle mb-2 text-muted">
+      <small>
+        {% comment %} {{ post.pub_date|date:"d E Y" }} | {% if post.location %}Город: {{ post.location.town }}{% else %}Город на планета Земля{% endif %}<br> {% endcomment %}
+        {{ post.pub_date|date:"d E Y" }} | {% if post.location %}Город: {% include "includes/location_link.html" %}{% else %}Город на планета Земля{% endif %}<br>
+        {% comment %} От автора @{{ post.author.username }} в категории {% include "includes/category_link.html" %} {% endcomment %}
+        От автора {% include "includes/author_link.html" %} в категории {% include "includes/category_link.html" %}
+      </small>
+    </h6>
+    <p class="card-text">{{ post.text|truncatewords:10 }}</p>
+    <a href="{% url 'posts:post_detail' post.id %}" class="card-link">Читать полный текст</a>
+  </div>
+</div>
