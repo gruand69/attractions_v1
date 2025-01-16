@@ -1,18 +1,34 @@
-{% load static %}
-<div class="card" style="width: 40rem;">
-  <div class="card-body">
-    <img src="{% static post.image %}" alt="Нет картинки">
-    <h5 class="card-title">{{ post.title }}</h5>
-    {% comment %} <img src="{% static '{{ post.image }}' %}" width="30" height="30" class="d-inline-block align-top" alt="Нет картинки"> {% endcomment %}
-    <h6 class="card-subtitle mb-2 text-muted">
-      <small>
-        {% comment %} {{ post.pub_date|date:"d E Y" }} | {% if post.location %}Город: {{ post.location.town }}{% else %}Город на планета Земля{% endif %}<br> {% endcomment %}
-        {{ post.pub_date|date:"d E Y" }} | {% if post.location %}Город: {% include "includes/location_link.html" %}{% else %}Город на планета Земля{% endif %}<br>
-        {% comment %} От автора @{{ post.author.username }} в категории {% include "includes/category_link.html" %} {% endcomment %}
-        От автора {% include "includes/author_link.html" %} в категории {% include "includes/category_link.html" %}
-      </small>
-    </h6>
-    <p class="card-text">{{ post.text|truncatewords:10 }}</p>
-    <a href="{% url 'posts:post_detail' post.id %}" class="card-link">Читать полный текст</a>
+<div class="col d-flex justify-content-center">
+  <div class="card" style="width: 40rem;">
+    <div class="card-body">
+      {% if post.image %}
+        <a href="{{ post.image.url }}" target="_blank">
+          <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ post.image.url }}">
+        </a>
+      {% endif %}
+      <h5 class="card-title">{{ post.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <small>
+          {{ post.pub_date|date:"d E Y, H:i" }}
+           |{% if post.town %}
+                <a class="text-muted" href="{% url 'posts:town_posts' post.town.slug %}">
+                  {{ post.town.title }}
+                </a>
+           {% endif %}
+            | 
+            {% if post.town.country %}
+                <a class="text-muted" href="{% url 'posts:country_town' post.town.country.slug %}">
+                  {{ post.town.country }}
+                </a>
+            {% endif %}
+            <br>
+          От автора <a class="text-muted" href="{% url 'users:profile' post.author.username %}">@{{ post.author.username }}</a> в
+          категории {% include "includes/category_link.html" %}
+        </small>
+      </h6>
+      <p class="card-text">{{ post.text|truncatewords:10 }}</p>
+      <a href="{% url 'posts:post_detail' post.id %}" class="card-link">Читать полный текст</a>
+      <a href="{% url 'posts:post_detail' post.id %}" class="card-link text-muted">Комментарии ({{ post.comment_count }})</a>
+    </div>
   </div>
 </div>

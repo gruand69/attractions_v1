@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+  Страна {{ country.title }}
+{% endblock %}
+{% block content %}
+  <h1 class="text-center">Страна - {{ country.title }}</h1>
+  <p class="col-6 offset-3 mb-5 lead text-center">{{ country.description }}</p>
+  {% for town in page_obj %}
+    <article class="mb-5">
+      <a class="text-muted" href="{% url 'posts:town_posts' town.slug %}">
+      {{ town.title }}
+      </a>
+    </article>   
+  {% endfor %}
+  {% include "includes/paginator.html" %}
+{% endblock %}
