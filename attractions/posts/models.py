@@ -232,4 +232,3 @@ class Advice(models.Model):
         verbose_name = 'Совет'
         verbose_name_plural = 'Советы'
         ordering = ('created_at',)
-

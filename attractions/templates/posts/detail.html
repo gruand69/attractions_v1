@@ -15,8 +15,18 @@
         <h6 class="card-subtitle mb-2 text-muted">
           <small>
             {{ post.pub_date|date:"d E Y, H:i" }}
-            | {% if post.town %}{{ post.town.title }}{% endif %}
-             | {% if post.country %}{{ post.country.title }}{% endif %}<br>
+            |{% if post.town %}
+            <a class="text-muted" href="{% url 'posts:town_posts' post.town.slug %}">
+              {{ post.town.title }}
+            </a>
+       {% endif %}
+        | 
+        {% if post.town.country %}
+            <a class="text-muted" href="{% url 'posts:country_town' post.town.country.slug %}">
+              {{ post.town.country }}
+            </a>
+        {% endif %}
+        <br>
             От автора <a class="text-muted" href="{% url 'users:profile' post.author.username %}">@{{ post.author.username }}</a> в
             категории {% include "includes/category_link.html" %}
           </small>
@@ -31,6 +41,17 @@
               Удалить публикацию
             </a>
           </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+          {% if added_to_favorite %}
+            <a class="btn btn-sm text-muted" href="{% url 'posts:delete_favorite' post.id %}" role="button">
+              Удалить из избранного
+            </a>
+          {% else %}
+            <a class="btn btn-sm text-muted" href="{% url 'posts:add_favorite' post.id %}" role="button">
+              Добавить в избранное
+            </a>
+          {% endif %}
         {% endif %}
         {% include "includes/comments.html" %}
       </div>

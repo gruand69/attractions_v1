@@ -5,12 +5,51 @@
 {% block content %}
   <h1 class="text-center">Страна - {{ country.title }}</h1>
   <p class="col-6 offset-3 mb-5 lead text-center">{{ country.description }}</p>
-  {% for town in page_obj %}
+  {% include "includes/advices.html" %}
+  <hr>
+  <div class="row">
+    <div class="col-4">
+      <h3>Города</h3>
+  {% for town in towns %}
     <article class="mb-5">
       <a class="text-muted" href="{% url 'posts:town_posts' town.slug %}">
       {{ town.title }}
       </a>
     </article>   
   {% endfor %}
-  {% include "includes/paginator.html" %}
+  <br>
+  </div>
+  <div class="col-8">
+    <h3>Советы</h3>
+{% for advice in page_obj %}
+  <div class="media mb-4">
+    <div class="media-body">
+      <h5 class="mt-0">
+        <a href="{% url 'users:profile' advice.author.username %}" name="advice_{{ advice.id }}">
+          @{{ advice.author.username }}
+        </a>
+      </h5>
+      <small class="text-muted">{{ advice.created_at }}</small>
+      <br>
+      {% if advice.image %}
+          <a href="{{ advice.image.url }}" target="_blank">
+            <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ advice.image.url }}">
+          </a>
+      {% endif %}
+      {{ advice.text|linebreaksbr }}
+    </div>
+    {% if user == advice.author %}
+      <a class="btn btn-sm text-muted" href="{% url 'posts:edit_advice' advice.country.slug advice.id %}" role="button">
+        Отредактировать совет
+      </a>
+      <a class="btn btn-sm text-muted" href="{% url 'posts:delete_advice' advice.country.slug advice.id %}" role="button">
+        Удалить совет
+      </a>
+    {% endif %}
+  </div>
+  <hr>
+{% endfor %}
+{% include "includes/paginator.html" %}
+</div>
+</div>
 {% endblock %}

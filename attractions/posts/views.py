@@ -72,10 +72,12 @@
 #     return render(request, template_name, context)
 
 import datetime
+# from urllib import request
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator
 from django.contrib.auth import get_user_model
 from django.db.models.query import QuerySet
 from django.http import HttpRequest
@@ -88,14 +90,15 @@ from django.views.generic import (CreateView,
                                   UpdateView)
 from django.urls import reverse, reverse_lazy
 
-from .models import (Category,
+from .models import (Advice,
+                     Category,
                      Comment,
                      Country,
                      Favorite,
                      Post,
                      Tag,
                      Town)
-from .forms import CommentForm, PostCreateForm
+from .forms import AdviceForm, CommentForm, PostCreateForm
 
 User = get_user_model()
 
@@ -121,6 +124,9 @@ class PostDetailView(DetailView):
         context['comments'] = (
             self.object.comments.select_related('author')
         )
+        if self.request.user.is_authenticated:
+            context['added_to_favorite'] = Favorite.objects.filter(
+                post=self.object, user=self.request.user).exists()
         return context
 
 
@@ -164,6 +170,27 @@ class CommentUpdateView(LoginRequiredMixin,
         return reverse('posts:post_detail', kwargs={'pk': pk})
 
 
+class AdviceUpdateView(LoginRequiredMixin,
+                        UpdateView):
+    model = Advice
+    form_class = AdviceForm
+    template_name = 'posts/advice.html'
+    pk_url_kwarg = 'advice_id'
+    slug_url_kwarg = 'slug'
+
+    def dispatch(self, request, *args, **kwargs) -> HttpResponse:
+        instance = get_object_or_404(Advice, pk=kwargs['advice_id'])
+        if instance.author != request.user:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_success_url(self) -> str:
+        # pk = self.kwargs.get('pk')
+        slug = self.kwargs.get('slug')
+        return reverse('posts:country_town', kwargs={'slug': slug})
+        # return reverse('posts:post_detail', kwargs={'pk': pk})
+
+
 class PostDeleteView(LoginRequiredMixin,
                      DeleteView):
     model = Post
@@ -194,6 +221,25 @@ class CommentDeleteView(LoginRequiredMixin,
         return reverse('posts:post_detail', kwargs={'pk': pk})
 
 
+class AdviceDeleteView(LoginRequiredMixin,
+                        DeleteView):
+    model = Advice
+    template_name = 'posts/advice.html'
+    pk_url_kwarg = 'advice_id'
+    slug_url_kwarg = 'slug'
+
+    def dispatch(self, request, *args, **kwargs) -> HttpResponse:
+        instance = get_object_or_404(Advice, pk=kwargs['advice_id'])
+        if instance.author != request.user:
+            raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_success_url(self) -> str:
+        # pk = self.kwargs.get('pk')
+        slug = self.kwargs.get('slug')
+        return reverse('posts:country_town', kwargs={'slug': slug})
+
+
 class CommentCreateView(LoginRequiredMixin,
                         CreateView):
     obj = None
@@ -211,6 +257,25 @@ class CommentCreateView(LoginRequiredMixin,
 
     def get_success_url(self) -> str:
         return reverse('posts:post_detail', kwargs={'pk': self.obj.pk})
+
+
+class AdviceCreateView(LoginRequiredMixin,
+                       CreateView):
+    obj = None
+    model = Advice
+    form_class = AdviceForm
+
+    def dispatch(self, request, *args, **kwargs) -> HttpResponse:
+        self.obj = get_object_or_404(Country, slug=kwargs['slug'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.country = self.obj
+        return super().form_valid(form)
+
+    def get_success_url(self) -> str:
+        return reverse('posts:country_town', kwargs={'slug': self.obj.slug})
 
 
 def index(request):
@@ -243,10 +308,19 @@ class CategoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_obj'] = (
-            self.object.posts.select_related('author')
-        )
+        posts = self.get_posts()      
+        # context['page_obj'] = (
+        #     self.object.posts.select_related('author')
+        # )
+        context['page_obj'] = posts
         return context
+
+    def get_posts(self):
+        queryset = self.object.posts.select_related('author')
+        paginator = Paginator(queryset, 10)
+        page = self.request.GET.get('page')
+        posts = paginator.get_page(page)
+        return posts
 
 
 class TownDetailView(DetailView):
@@ -257,26 +331,44 @@ class TownDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_obj'] = (
-            self.object.posts.select_related('author')
-        )
+        posts = self.get_posts()        
+        context['page_obj'] = posts
+        # context['page_obj'] = (
+        #     self.object.posts.select_related('author')
+        # )
         return context
+
+    def get_posts(self):
+        queryset = self.object.posts.select_related('author')
+        paginator = Paginator(queryset, 10)
+        page = self.request.GET.get('page')
+        posts = paginator.get_page(page)
+        return posts
 
 
 class CountryDetailView(DetailView):
     model = Country
     template_name = 'posts/country.html'
-    paginate_by = 10
+    # paginate_by = 10
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_obj'] = (
+        context['towns'] = (
             self.object.towns.all()
         )
+        context['form'] = AdviceForm
+        advices = self.get_advices()
+        context['page_obj'] = advices
+        # context['page_obj'] = self.object.advices.select_related('author')
         return context
 
-
+    def get_advices(self):
+        queryset = self.object.advices.select_related('author')
+        paginator = Paginator(queryset, 10)
+        page = self.request.GET.get('page')
+        advices = paginator.get_page(page)
+        return advices
     # def get_queryset(self):
     #     slug = self.kwargs.get('slug')
     #     return Post.objects.select_related('author').filter(
@@ -323,4 +415,48 @@ def author_posts(request, pk):
     )
     context = {'author': author, 'post_list': post_list
                }
+    return render(request, template, context)
+
+
+@login_required
+def add_advice(request, slug):
+    country = get_object_or_404(Country, slug=slug)
+    form = AdviceForm(
+        request.POST or None, files=request.FILES or None)
+    if form.is_valid():
+        advice = form.save(commit=False)
+        advice.author = request.user
+        advice.country = country
+        advice.save()
+    return redirect('posts:country_town', slug=slug)
+
+
+@login_required
+def add_delite_favorite(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if Favorite.objects.filter(post=post, user=request.user).exists():
+        Favorite.objects.filter(post=post, user=request.user).delete()
+    else:
+        Favorite.objects.create(post=post, user=request.user)
+        # post.favoriting.add(request.user)
+        # post.favoriting.filter(user=request.user).add()
+
+    return redirect('posts:get_favorite')
+
+
+@login_required
+def get_favorite(request):
+    template = 'posts/favorite.html'
+    author = get_object_or_404(
+        User.objects.values('username',), pk=request.user.pk)
+    # favorite_post = Favorite.objects.filter(user=request.user).all()
+    # posts = favorite_post.post
+    posts = Post.objects.filter(favoriting__user=request.user).order_by('-id')
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj,
+        'author': author,
+    }
     return render(request, template, context)

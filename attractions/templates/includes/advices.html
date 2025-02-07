@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+  {% load django_bootstrap5 %}
+  <h5 class="mb-4">Оставить совет</h5>
+  <form method="post" enctype="multipart/form-data" action="{% url 'posts:add_advice' country.slug %}">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Отправить" %}
+  </form>
+{% endif %}
+<br>

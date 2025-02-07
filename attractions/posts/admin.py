@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from django.contrib import admin
+from django.contrib.auth import get_user_model
 from django.shortcuts import redirect, render
 from django.urls import path
 from openpyxl.reader.excel import load_workbook
@@ -14,6 +15,8 @@ from .models import (Advice,
                      Town)
 
 from .forms import XlsxImportForm
+
+User = get_user_model()
 
 
 class PostConfig(AppConfig):
@@ -125,11 +128,81 @@ class TownAdmin(admin.ModelAdmin):
         return render(request, 'posts/add_records_form.html', context=context)
 
 
+class AdviceAdmin(admin.ModelAdmin):
+    list_display = ('text', 'image', 'country', 'created_at', 'author')
+    change_list_template = 'posts/record_change_list.html'
+
+    def get_urls(self):
+        urls = super().get_urls()
+        my_urls = [
+            path('import-records-from-xlsx/', self.import_records_from_xlsx),
+        ]
+        return my_urls + urls
+
+    def import_records_from_xlsx(self, request):
+        context = admin.site.each_context(request)
+        if request.method == 'POST':
+            xlsx_file = request.FILES['xlsx_file']
+
+            workbook = load_workbook(filename=xlsx_file, read_only=True)
+            worksheet = workbook.active
+
+            records_to_save = []
+            for row in worksheet.rows:
+                new_obj = self.model(
+                    text=row[0].value,
+                    country=Country.objects.get(id=row[1].value),
+                    author=User.objects.get(id=row[2].value))
+                records_to_save.append(new_obj)
+            self.model.objects.bulk_create(records_to_save)
+            self.message_user(
+                request, f'Импортировано строк: {len(records_to_save)}')
+            return redirect('admin:posts_advice_changelist')
+        context['form'] = XlsxImportForm()
+        return render(request, 'posts/add_records_form.html', context=context)
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'text', 'image', 'town', 'author', 'category')
+    change_list_template = 'posts/record_change_list.html'
+
+    def get_urls(self):
+        urls = super().get_urls()
+        my_urls = [
+            path('import-records-from-xlsx/', self.import_records_from_xlsx),
+        ]
+        return my_urls + urls
+
+    def import_records_from_xlsx(self, request):
+        context = admin.site.each_context(request)
+        if request.method == 'POST':
+            xlsx_file = request.FILES['xlsx_file']
+
+            workbook = load_workbook(filename=xlsx_file, read_only=True)
+            worksheet = workbook.active
+
+            records_to_save = []
+            for row in worksheet.rows:
+                new_obj = self.model(
+                    title=row[0].value,
+                    text=row[1].value,
+                    author=User.objects.get(id=row[2].value),
+                    category=Category.objects.get(id=row[3].value),
+                    town=Town.objects.get(id=row[4].value))
+                records_to_save.append(new_obj)
+            self.model.objects.bulk_create(records_to_save)
+            self.message_user(
+                request, f'Импортировано строк: {len(records_to_save)}')
+            return redirect('admin:posts_post_changelist')
+        context['form'] = XlsxImportForm()
+        return render(request, 'posts/add_records_form.html', context=context)
+
+
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Advice)
+admin.site.register(Advice, AdviceAdmin)
 admin.site.register(Comment)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Favorite)
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Tag)
 admin.site.register(Town, TownAdmin)
