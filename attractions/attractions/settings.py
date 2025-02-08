@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'posts.apps.PostsConfig',
     'debug_toolbar',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,5 @@ LOGIN_URL = 'login'
 MEDIA_URL = 'media/'
 
 USE_L10N = True
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
