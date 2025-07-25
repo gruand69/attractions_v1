@@ -7,14 +7,15 @@ app_name = "posts"
 urlpatterns = [
     path("", views.PostListView.as_view(), name="index"),
     path(
-        "posts/<int:pk>/", views.PostDetailView.as_view(), name="post_detail"),
+        "posts/<int:pk>/", views.PostDetailView.as_view(),
+         name="post_detail"),
     path('posts/create/', views.PostCreateView.as_view(),
          name='create_post'),
     path(
         "posts/<int:pk>/edit/", views.PostUpdateView.as_view(
         ), name="edit_post"),
     path(
-        "posts/<int:pk>/delete/", views.PostDetailView.as_view(
+        "posts/<int:pk>/delete/", views.PostDeleteView.as_view(
         ), name="delete_post"),
 
     # ---------------------------------------------------------------
@@ -51,8 +52,8 @@ urlpatterns = [
          name="add_favorite"),
     path("posts/<int:pk>/delite_favorite/", views.add_delite_favorite,
          name="delete_favorite"),
-    path("author/<int:pk>/",
-         views.author_posts, name="author_posts"),
+#     path("author/<int:pk>/",
+#          views.author_posts, name="author_posts"),
     path("get_favorite/",
          views.get_favorite, name="get_favorite"),
 ]

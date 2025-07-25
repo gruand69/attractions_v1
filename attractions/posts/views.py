@@ -73,6 +73,7 @@
 
 import datetime
 # from urllib import request
+from django.conf import settings
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -120,14 +121,25 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = CommentForm()
-        context['comments'] = (
-            self.object.comments.select_related('author')
-        )
+        # context['form'] = CommentForm()
+        # context['comments'] = (
+        #     self.object.comments.select_related('author')
+        # )
+        context['comments'] = self.get_comments()
         if self.request.user.is_authenticated:
+            # context['form'] = CommentForm()
+            context['form'] = CommentForm
+
             context['added_to_favorite'] = Favorite.objects.filter(
                 post=self.object, user=self.request.user).exists()
         return context
+    
+    def get_comments(self):
+        queryset = self.object.comments.all()
+        paginator = Paginator(queryset, settings.OBJECTS_COUNT_ON_PAGES)
+        page = self.request.GET.get('page')
+        posts = paginator.get_page(page)
+        return posts
 
 
 class PostListView(ListView):
@@ -135,7 +147,7 @@ class PostListView(ListView):
     queryset = Post.objects.prefetch_related(
         'tags').select_related('author', 'category', 'category', 'town')
     template_name = 'posts/index.html'
-    paginate_by = 10
+    paginate_by = settings.OBJECTS_COUNT_ON_PAGES
 
 
 class PostUpdateView(LoginRequiredMixin,
@@ -303,7 +315,7 @@ def post_detail(request, pk):
 class CategoryDetailView(DetailView):
     model = Category
     template_name = 'posts/category.html'
-    paginate_by = 10
+    # paginate_by = settings.OBJECTS_COUNT_ON_PAGES
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
@@ -316,8 +328,10 @@ class CategoryDetailView(DetailView):
         return context
 
     def get_posts(self):
-        queryset = self.object.posts.select_related('author')
-        paginator = Paginator(queryset, 10)
+        # queryset = self.object.posts.select_related('author')
+        queryset = self.object.posts.all()
+
+        paginator = Paginator(queryset, settings.OBJECTS_COUNT_ON_PAGES)
         page = self.request.GET.get('page')
         posts = paginator.get_page(page)
         return posts
@@ -326,7 +340,7 @@ class CategoryDetailView(DetailView):
 class TownDetailView(DetailView):
     model = Town
     template_name = 'posts/town.html'
-    paginate_by = 10
+    # paginate_by = settings.OBJECTS_COUNT_ON_PAGES
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
@@ -339,8 +353,9 @@ class TownDetailView(DetailView):
         return context
 
     def get_posts(self):
-        queryset = self.object.posts.select_related('author')
-        paginator = Paginator(queryset, 10)
+        # queryset = self.object.posts.select_related('author')
+        queryset = self.object.posts.all()
+        paginator = Paginator(queryset, settings.OBJECTS_COUNT_ON_PAGES)
         page = self.request.GET.get('page')
         posts = paginator.get_page(page)
         return posts
@@ -349,7 +364,7 @@ class TownDetailView(DetailView):
 class CountryDetailView(DetailView):
     model = Country
     template_name = 'posts/country.html'
-    # paginate_by = 10
+    # paginate_by = settings.OBJECTS_COUNT_ON_PAGES
     slug_url_kwarg = 'slug'
 
     def get_context_data(self, **kwargs):
@@ -357,15 +372,18 @@ class CountryDetailView(DetailView):
         context['towns'] = (
             self.object.towns.all()
         )
-        context['form'] = AdviceForm
+        # context['form'] = AdviceForm
         advices = self.get_advices()
         context['page_obj'] = advices
         # context['page_obj'] = self.object.advices.select_related('author')
+        if self.request.user.is_authenticated:
+            context['form'] = AdviceForm
         return context
 
     def get_advices(self):
-        queryset = self.object.advices.select_related('author')
-        paginator = Paginator(queryset, 10)
+        # queryset = self.object.advices.select_related('author')
+        queryset = self.object.advices.all()
+        paginator = Paginator(queryset, settings.OBJECTS_COUNT_ON_PAGES)
         page = self.request.GET.get('page')
         advices = paginator.get_page(page)
         return advices
@@ -404,18 +422,18 @@ def category_posts(request, slug):
 #     return render(request, template, context)
 
 
-def author_posts(request, pk):
-    template = 'posts/author.html'
-    author = get_object_or_404(
-        User.objects.values('username',), pk=pk)
-    post_list = Post.objects.select_related(
-        'location', 'author').filter(
-        is_published=True,
-        author__id=pk
-    )
-    context = {'author': author, 'post_list': post_list
-               }
-    return render(request, template, context)
+# def author_posts(request, pk):
+#     template = 'posts/author.html'
+#     author = get_object_or_404(
+#         User.objects.values('username',), pk=pk)
+#     post_list = Post.objects.select_related(
+#         'location', 'author').filter(
+#         is_published=True,
+#         author__id=pk
+#     )
+#     context = {'author': author, 'post_list': post_list
+#                }
+#     return render(request, template, context)
 
 
 @login_required
@@ -452,7 +470,7 @@ def get_favorite(request):
     # favorite_post = Favorite.objects.filter(user=request.user).all()
     # posts = favorite_post.post
     posts = Post.objects.filter(favoriting__user=request.user).order_by('-id')
-    paginator = Paginator(posts, 10)
+    paginator = Paginator(posts, settings.OBJECTS_COUNT_ON_PAGES)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {

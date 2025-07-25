@@ -179,7 +179,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
-        ordering = ('created_at',)
+        ordering = ('-created_at',)
 
 
 class Favorite(models.Model):
@@ -231,4 +231,4 @@ class Advice(models.Model):
     class Meta:
         verbose_name = 'Совет'
         verbose_name_plural = 'Советы'
-        ordering = ('created_at',)
+        ordering = ('-created_at',)

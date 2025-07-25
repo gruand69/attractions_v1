@@ -154,3 +154,5 @@ MEDIA_URL = 'media/'
 USE_L10N = True
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+
+OBJECTS_COUNT_ON_PAGES = 10
