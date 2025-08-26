@@ -35,7 +35,7 @@ def test_user_can_create_comment(admin_client, comment_form_data, id_for_post):
     assert new_comment.post.id == comment_form_data['post']
 
 @pytest.mark.django_db
-def test_anomymous_user_cant_create_cpmment(client, comment_form_data, id_for_post):
+def test_anomymous_user_cant_create_comment(client, comment_form_data, id_for_post):
     url = reverse('posts:post_detail', args=id_for_post)
     response = client.post(url, data=comment_form_data)
     assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED
@@ -118,8 +118,57 @@ def test_author_can_delete_his_objects(author_client, name, args, redirect_addre
     ('posts:delete_post', 
      pytest.lazy_fixture('id_for_post'), Post)
     ),)
-def test_other_user_cant_delete_post(admin_client, name, args, models):
+def test_other_user_cant_delete_object(admin_client, name, args, models):
     url = reverse(name, args=args)
     response = admin_client.post(url)
     assert response.status_code == HTTPStatus.FORBIDDEN
     assert models.objects.count() == 1
+
+@pytest.mark.parametrize(
+    'name, args, model, form_data, redirect_url, redirect_args',
+    (
+    ('posts:edit_comment', 
+     pytest.lazy_fixture('id_for_post_comment'),
+     pytest.lazy_fixture('comment'),
+     pytest.lazy_fixture('comment_form_data'),
+     'posts:post_detail',
+     pytest.lazy_fixture('id_for_post'),
+     ),
+    ('posts:edit_advice', 
+     pytest.lazy_fixture('args_for_advice'),
+     pytest.lazy_fixture('advice'),
+     pytest.lazy_fixture('advice_form_data'),
+     'posts:country_town',
+     pytest.lazy_fixture('slug_for_country'),
+     ),
+    ))
+def test_author_can_edit_object(
+    author_client, name, args, form_data, model, redirect_url, redirect_args):
+    url = reverse(name, args=args)
+    response = author_client.post(url, data=form_data)
+    assertRedirects(response, reverse(redirect_url, args=redirect_args))
+    model.refresh_from_db()
+    assert model.text == form_data['text']
+
+@pytest.mark.parametrize(
+    'name, args, model, form_data, clas',
+    (
+    ('posts:edit_comment', 
+     pytest.lazy_fixture('id_for_post_comment'),
+     pytest.lazy_fixture('comment'),
+     pytest.lazy_fixture('comment_form_data'),
+     Comment
+     ),
+     ('posts:edit_advice', 
+     pytest.lazy_fixture('args_for_advice'),
+     pytest.lazy_fixture('advice'),
+     pytest.lazy_fixture('advice_form_data'),
+     Advice
+     ),
+    ))
+def test_other_user_cant_edit_object(admin_client, name, args, form_data, model, clas):
+    url = reverse(name, args=args)
+    response = admin_client.post(url, data=form_data)
+    assert response.status_code == HTTPStatus.FORBIDDEN
+    clas_from_db = clas.objects.get(id=model.id)
+    assert model.text == clas_from_db.text

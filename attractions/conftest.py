@@ -70,6 +70,11 @@ def advice(country, author):
     return advice
 
 @pytest.fixture
+def username_for_author(author):
+    return author.username,
+
+
+@pytest.fixture
 def id_for_post(post):
     return post.id,
 

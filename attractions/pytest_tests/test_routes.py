@@ -76,3 +76,35 @@ def test_redirects(client, name, args):
     expected_url = f'{login_url}?next={url}'
     response = client.get(url)
     assertRedirects(response, expected_url)
+
+@pytest.mark.parametrize(
+        'parametrized_client, expected_status',
+        (
+            (pytest.lazy_fixture('admin_client'), HTTPStatus.FORBIDDEN),
+            (pytest.lazy_fixture('author_client'), HTTPStatus.OK)
+        ))
+def test_page_change_profile_avalability_for_authorized_user(
+    parametrized_client, expected_status, username_for_author):
+    url = reverse('users:edit_profile',args=username_for_author)
+    response = parametrized_client.get(url)
+    assert response.status_code == expected_status
+
+def test_page_profile_avalability_for_authorized_user(admin_client, username_for_author):
+        url = reverse('users:profile',args=username_for_author)
+        response = admin_client.get(url)
+        assert response.status_code == HTTPStatus.OK
+
+@pytest.mark.parametrize(
+    'name, args',
+    (
+    ('users:profile', pytest.lazy_fixture('username_for_author')),
+    ('users:edit_profile', pytest.lazy_fixture('username_for_author')),
+    ),
+)
+def test_redirect_for_anonymous_client(name, args, client):
+        login_url = f'/auth/{settings.LOGIN_URL}/'
+        url = reverse(name, args=args)
+        redirect_url = f'{login_url}?next={url}'
+        response = client.get(url)
+        assertRedirects(response, redirect_url)
+        
