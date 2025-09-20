@@ -10,7 +10,6 @@ class RulesView(TemplateView):
     template_name = 'pages/rules.html'
 
 
-
 def about(request):
     template_name = 'pages/about.html'
     return render(request, template_name)

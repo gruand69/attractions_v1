@@ -1,24 +1,20 @@
 from http import HTTPStatus
-from urllib import response
 
 from django.contrib.auth import get_user_model
-from django.db.models import F
 from django.test import Client, TestCase
 from django.urls import reverse, reverse_lazy
 
-
-from posts.models import Post, Town, Category, Country, Comment, Advice, Favorite
-
+from posts.models import Advice, Category, Comment, Country, Post, Town
 
 User = get_user_model()
 
 
 class TestCommentCreation(TestCase):
     COMMENT_TEXT = 'Comment text'
-    
+
     @classmethod
     def setUpTestData(cls) -> None:
-        cls.author = User.objects.create(username='Vasya')        
+        cls.author = User.objects.create(username='Vasya')
         cls.category = Category.objects.create(
             title='Category title',
             description='Category descriptions',
@@ -44,11 +40,11 @@ class TestCommentCreation(TestCase):
         )
         cls.url = reverse('posts:add_comment', args=(cls.post.id,))
         cls.redirect_url = reverse('posts:post_detail', args=(cls.post.id,))
-        cls.user=User.objects.create(username='user')
+        cls.user = User.objects.create(username='user')
         cls.auth_client = Client()
         cls.auth_client.force_login(cls.user)
         cls.form_data = {'text': cls.COMMENT_TEXT}
-    
+
     def test_anonimous_user_cant_create_comment(self):
         self.client.post(self.url, data=self.form_data)
         comments_count = Comment.objects.count()
@@ -68,7 +64,7 @@ class TestCommentCreation(TestCase):
 
 class TestAdviceCreation(TestCase):
     ADVICE_TEXT = 'Advice text'
-    
+
     @classmethod
     def setUpTestData(cls) -> None:
         cls.country = Country.objects.create(
@@ -77,12 +73,13 @@ class TestAdviceCreation(TestCase):
             slug='cnt'
         )
         cls.url = reverse('posts:add_advice', args=(cls.country.slug,))
-        cls.redirect_url = reverse('posts:country_town', args=(cls.country.slug,))
-        cls.user=User.objects.create(username='user')
+        cls.redirect_url = reverse('posts:country_town', args=(
+            cls.country.slug,))
+        cls.user = User.objects.create(username='user')
         cls.auth_client = Client()
         cls.auth_client.force_login(cls.user)
         cls.form_data = {'text': cls.ADVICE_TEXT}
-    
+
     def test_anonimous_user_cant_create_advice(self):
         self.client.post(self.url, data=self.form_data)
         advices_count = Advice.objects.count()
@@ -103,10 +100,9 @@ class TestAdviceCreation(TestCase):
 class TestPostCreation(TestCase):
     POST_TEXT = 'Post text'
     POST_TITLE = 'Post title'
-    
+
     @classmethod
     def setUpTestData(cls) -> None:
-        # cls.author = User.objects.create(username='Vasya')        
         cls.category = Category.objects.create(
             title='Category title',
             description='Category descriptions',
@@ -125,15 +121,15 @@ class TestPostCreation(TestCase):
         )
         cls.url = reverse('posts:create_post')
         cls.redirect_url = reverse_lazy('posts:index')
-        cls.user=User.objects.create(username='user')
+        cls.user = User.objects.create(username='user')
         cls.auth_client = Client()
         cls.auth_client.force_login(cls.user)
         cls.form_data = {'text': cls.POST_TEXT,
-                                        'title': cls.POST_TITLE,
-                                        'category': cls.category.id,
-                                        'town': cls.town.id
+                         'title': cls.POST_TITLE,
+                         'category': cls.category.id,
+                         'town': cls.town.id
                          }
-    
+
     def test_anonimous_user_cant_create_post(self):
         self.client.post(self.url, data=self.form_data)
         posts_count = Post.objects.count()
@@ -156,10 +152,10 @@ class TestPostCreation(TestCase):
 class TestCommentEditDelete(TestCase):
     COMMENT_TEXT = 'Comment text'
     NEW_COMMENT_TEXT = 'New Comment text'
-    
+
     @classmethod
     def setUpTestData(cls) -> None:
-        cls.author = User.objects.create(username='Vasya')        
+        cls.author = User.objects.create(username='Vasya')
         cls.category = Category.objects.create(
             title='Category title',
             description='Category descriptions',
@@ -185,12 +181,10 @@ class TestCommentEditDelete(TestCase):
         )
         # cls.post_url = reverse('posts:post_detail', args=(cls.post.id,))
         cls.redirect_url = reverse('posts:post_detail', args=(cls.post.id,))
-        
-        cls.user=User.objects.create(username='user')
+        cls.user = User.objects.create(username='user')
         cls.user_client = Client()
         cls.user_client.force_login(cls.user)
-
-        cls.reader=User.objects.create(username='reader')
+        cls.reader = User.objects.create(username='reader')
         cls.reader_client = Client()
         cls.reader_client.force_login(cls.reader)
 
@@ -198,12 +192,12 @@ class TestCommentEditDelete(TestCase):
             text=cls.COMMENT_TEXT,
             post=cls.post,
             author=cls.user)
-        
-        cls.edit_url = reverse('posts:edit_comment', args=(cls.post.id, cls.comment.id))
-        cls.delete_url = reverse('posts:delete_comment', args=(cls.post.id, cls.comment.id))
 
+        cls.edit_url = reverse('posts:edit_comment', args=(
+            cls.post.id, cls.comment.id))
+        cls.delete_url = reverse('posts:delete_comment', args=(
+            cls.post.id, cls.comment.id))
         cls.form_data = {'text': cls.  NEW_COMMENT_TEXT}
-
 
     def test_author_can_delete_comment(self):
         response = self.user_client.delete(self.delete_url)
@@ -216,7 +210,7 @@ class TestCommentEditDelete(TestCase):
         self.assertEqual(response.status_code, HTTPStatus.FORBIDDEN)
         comments_count = Comment.objects.count()
         self.assertEqual(comments_count, 1)
-    
+
     def test_author_can_edit_comment(self):
         response = self.user_client.post(self.edit_url, data=self.form_data)
         self.assertRedirects(response, self.redirect_url)
@@ -233,34 +227,32 @@ class TestCommentEditDelete(TestCase):
 class TestAdviceEditDelete(TestCase):
     ADVICE_TEXT = 'Comment text'
     NEW_ADVICE_TEXT = 'New Comment text'
-    
+
     @classmethod
-    def setUpTestData(cls) -> None:        
+    def setUpTestData(cls) -> None:
         cls.country = Country.objects.create(
             title='Country title',
             description='Country descriptions',
             slug='cnt'
         )
-        cls.redirect_url = reverse('posts:country_town', args=(cls.country.slug,))
-        
-        cls.user=User.objects.create(username='user')
+        cls.redirect_url = reverse('posts:country_town', args=(
+            cls.country.slug,))
+        cls.user = User.objects.create(username='user')
         cls.user_client = Client()
         cls.user_client.force_login(cls.user)
-
-        cls.reader=User.objects.create(username='reader')
+        cls.reader = User.objects.create(username='reader')
         cls.reader_client = Client()
         cls.reader_client.force_login(cls.reader)
-
         cls.advice = Advice.objects.create(
             text=cls.ADVICE_TEXT,
             country=cls.country,
             author=cls.user)
-        
-        cls.edit_url = reverse('posts:edit_advice', args=(cls.country.slug, cls.advice.id))
-        cls.delete_url = reverse('posts:delete_advice', args=(cls.country.slug, cls.advice.id))
+        cls.edit_url = reverse('posts:edit_advice', args=(
+            cls.country.slug, cls.advice.id))
+        cls.delete_url = reverse('posts:delete_advice', args=(
+            cls.country.slug, cls.advice.id))
 
         cls.form_data = {'text': cls.  NEW_ADVICE_TEXT}
-
 
     def test_author_can_delete_advice(self):
         response = self.user_client.delete(self.delete_url)
@@ -292,11 +284,10 @@ class TestPostEditDelete(TestCase):
     NEW_POST_TEXT = 'New Post text'
     POST_TITLE = 'Post title'
     NEW_POST_TITLE = 'New Post text'
-    
-    
+
     @classmethod
     def setUpTestData(cls) -> None:
-        cls.author = User.objects.create(username='Vasya')        
+        cls.author = User.objects.create(username='Vasya')
         cls.category = Category.objects.create(
             title='Category title',
             description='Category descriptions',
@@ -320,24 +311,18 @@ class TestPostEditDelete(TestCase):
             category=cls.category,
             town=cls.town
         )
-        # cls.post_url = reverse('posts:post_detail', args=(cls.post.id,))
         cls.redirect_url = reverse('posts:index')
-        
-        # cls.user=User.objects.create(username='user')
         cls.author_client = Client()
         cls.author_client.force_login(cls.author)
-
-        cls.reader=User.objects.create(username='reader')
+        cls.reader = User.objects.create(username='reader')
         cls.reader_client = Client()
         cls.reader_client.force_login(cls.reader)
-        
         cls.edit_url = reverse('posts:edit_post', args=(cls.post.id,))
         cls.delete_url = reverse('posts:delete_post', args=(cls.post.id,))
-
         cls.form_data = {'text': cls.NEW_POST_TEXT,
-                                        'title': cls.NEW_POST_TITLE,
-                                        'category': cls.category.id,
-                                        'town': cls.town.id,
+                         'title': cls.NEW_POST_TITLE,
+                         'category': cls.category.id,
+                         'town': cls.town.id,
                          }
 
     def test_author_can_delete_post(self):

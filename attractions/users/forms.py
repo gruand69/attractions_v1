@@ -1,6 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
 User = get_user_model()
 
@@ -31,9 +31,10 @@ class CustomUserChangeForm(UserChangeForm):
             'image')
         # widgets = {
         #     'date_of_birth': forms.DateInput(attrs={'type': 'date'})
-            
+
         # }
 # Date = forms.DateField(
 #         localize=True,
-#         widget=forms.DateInput(format='%Y-%m-%d', attrs={'class': 'form-control', 'type': 'date'}),
+#         widget=forms.DateInput(
+#         format='%Y-%m-%d', attrs={'class': 'form-control', 'type': 'date'}),
 #     )

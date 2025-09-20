@@ -5,16 +5,9 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from openpyxl.reader.excel import load_workbook
 
-from .models import (Advice,
-                     Category,
-                     Comment,
-                     Country,
-                     Favorite,
-                     Post,
-                     Tag,
-                     Town)
-
 from .forms import XlsxImportForm
+from .models import (Advice, Category, Comment, Country, Favorite, Post, Tag,
+                     Town)
 
 User = get_user_model()
 

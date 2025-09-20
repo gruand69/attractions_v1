@@ -8,7 +8,7 @@ urlpatterns = [
     path("", views.PostListView.as_view(), name="index"),
     path(
         "posts/<int:pk>/", views.PostDetailView.as_view(),
-         name="post_detail"),
+        name="post_detail"),
     path('posts/create/', views.PostCreateView.as_view(),
          name='create_post'),
     path(
@@ -42,18 +42,15 @@ urlpatterns = [
         views.AdviceUpdateView.as_view(), name="edit_advice"),
     path("country/<slug:slug>/delete_advice/<int:advice_id>/",
          views.AdviceDeleteView.as_view(), name="delete_advice"),
-#     path("country/<slug:slug>/advice",
-#          views.add_advice, name="add_advice"),
     path("country/<slug:slug>/advice",
          views.AdviceCreateView.as_view(), name="add_advice"),
- 
-# ------------------------------------------------------------------
+
+    # ------------------------------------------------------------------
+
     path("posts/<int:pk>/add_favorite/", views.add_delite_favorite,
          name="add_favorite"),
     path("posts/<int:pk>/delite_favorite/", views.add_delite_favorite,
          name="delete_favorite"),
-#     path("author/<int:pk>/",
-#          views.author_posts, name="author_posts"),
     path("get_favorite/",
          views.get_favorite, name="get_favorite"),
 ]

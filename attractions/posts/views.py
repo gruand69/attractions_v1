@@ -7,8 +7,10 @@
 #         "location": "Санкт-Петербург",
 #         "date": "30 сентября 2004 года",
 #         "category": "churchs",
-#         "text": """Самый крупный собор Северной столицы строился на протяжении
-#             40 лет. Современное здание — четвертое по счету, построенное в духе
+#         "text": """Самый крупный собор Северной столицы строился
+#            на протяжении
+#             40 лет. Современное здание — четвертое по счету, построенное в
+#              духе
 #             позднего классицизма по проекту архитектора Огюста Монферрана.
 #             Храм возведен в честь преподобного Исаакия Далматского.
 #             Снаружи собор украшают более 350 скульптур,
@@ -71,35 +73,20 @@
 #     }
 #     return render(request, template_name, context)
 
-import datetime
-# from urllib import request
 from django.conf import settings
-
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
-from django.contrib.auth import get_user_model
-from django.db.models.query import QuerySet
-from django.http import HttpRequest
 from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import (CreateView,
-                                  DeleteView,
-                                  DetailView,
-                                  ListView,
-                                  UpdateView)
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
-from .models import (Advice,
-                     Category,
-                     Comment,
-                     Country,
-                     Favorite,
-                     Post,
-                     Tag,
-                     Town)
 from .forms import AdviceForm, CommentForm, PostCreateForm
+from .models import Advice, Category, Comment, Country, Favorite, Post, Town
 
 User = get_user_model()
 
@@ -133,7 +120,7 @@ class PostDetailView(DetailView):
             context['added_to_favorite'] = Favorite.objects.filter(
                 post=self.object, user=self.request.user).exists()
         return context
-    
+
     def get_comments(self):
         queryset = self.object.comments.all()
         paginator = Paginator(queryset, settings.OBJECTS_COUNT_ON_PAGES)
@@ -183,7 +170,7 @@ class CommentUpdateView(LoginRequiredMixin,
 
 
 class AdviceUpdateView(LoginRequiredMixin,
-                        UpdateView):
+                       UpdateView):
     model = Advice
     form_class = AdviceForm
     template_name = 'posts/advice.html'
@@ -234,7 +221,7 @@ class CommentDeleteView(LoginRequiredMixin,
 
 
 class AdviceDeleteView(LoginRequiredMixin,
-                        DeleteView):
+                       DeleteView):
     model = Advice
     template_name = 'posts/advice.html'
     pk_url_kwarg = 'advice_id'
@@ -320,10 +307,7 @@ class CategoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        posts = self.get_posts()      
-        # context['page_obj'] = (
-        #     self.object.posts.select_related('author')
-        # )
+        posts = self.get_posts()
         context['page_obj'] = posts
         return context
 
@@ -345,11 +329,8 @@ class TownDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        posts = self.get_posts()        
+        posts = self.get_posts()
         context['page_obj'] = posts
-        # context['page_obj'] = (
-        #     self.object.posts.select_related('author')
-        # )
         return context
 
     def get_posts(self):

@@ -8,4 +8,4 @@ class MyUser(AbstractUser):
     date_of_birth = models.DateField(
         'Дата рождения', blank=True, null=True, validators=(real_age,))
     image = models.ImageField('Фото', upload_to='users_images', blank=True)
-image = models.ImageField('Фото', upload_to='users_images', blank=True)
+#   image = models.ImageField('Фото', upload_to='users_images', blank=True)
