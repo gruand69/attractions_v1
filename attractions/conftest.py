@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 import pytest
 from django.conf import settings
 from django.utils import timezone
-
 from posts.models import Advice, Category, Comment, Country, Post, Town
 
 today = datetime.today()

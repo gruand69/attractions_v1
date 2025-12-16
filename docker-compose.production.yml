@@ -1,0 +1,31 @@
+volumes:
+  pg_data_production:
+  static_volume:
+  media_volume:
+
+services:
+  db:
+    image: postgres:13.10
+    env_file: .env
+    volumes:
+      - pg_data_production:/var/lib/postgresql/data
+  attractions:
+    # build: .
+    image: gruand69/attractions
+    env_file: .env
+    depends_on:
+      - db
+    volumes:
+      - static_volume:/backend_static
+      - media_volume:/media/
+  gateway:
+    image: gruand69/attractions_gateway
+    # build: ./gateway/
+    env_file: .env
+    depends_on:
+      - attractions
+    volumes:
+      - static_volume:/staticfiles/
+      - media_volume:/mediafiles/
+    ports:
+      - 8000:80

@@ -3,7 +3,6 @@ from http import HTTPStatus
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse, reverse_lazy
-
 from posts.models import Advice, Category, Comment, Country, Post, Town
 
 User = get_user_model()

@@ -136,7 +136,9 @@ class Post(models.Model):
         verbose_name='Категория'
     )
     image = models.ImageField(
-        'Фотография', upload_to='posts_images', blank=True)
+        'Фотография',
+        upload_to='posts_images',
+        blank=True)
 
     town = models.ForeignKey(
         Town,

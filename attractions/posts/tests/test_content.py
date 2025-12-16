@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
-
 from posts.models import (Advice, Category, Comment, Country, Favorite, Post,
                           Town)
 

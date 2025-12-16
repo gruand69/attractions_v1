@@ -1,0 +1,1313 @@
+[
+    {
+        "model": "admin.logentry",
+        "pk": 1,
+        "fields": {
+            "action_time": "2024-12-19T19:56:09.361Z",
+            "user": 1,
+            "content_type": 12,
+            "object_id": "1",
+            "object_repr": "Санкт-Петербург",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 2,
+        "fields": {
+            "action_time": "2024-12-19T19:57:56.553Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "1",
+            "object_repr": "собор",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 3,
+        "fields": {
+            "action_time": "2024-12-19T19:58:33.976Z",
+            "user": 1,
+            "content_type": 10,
+            "object_id": "1",
+            "object_repr": "Россия",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 4,
+        "fields": {
+            "action_time": "2024-12-27T15:31:55.546Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "12",
+            "object_repr": "building",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2024-12-27T15:31:55.557Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "11",
+            "object_repr": "monument",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2024-12-27T15:31:55.564Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "13",
+            "object_repr": "museum",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2024-12-27T15:31:55.571Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "10",
+            "object_repr": "square",
+            "action_flag": 3,
+            "change_message": ""
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "16nrs7725brs1edcfq7gdos5sungd5xo",
+        "fields": {
+            "session_data": ".eJxVjMsOwiAUBf-FtSFcWqC4dN9vaLgPpWogKe3K-O_apAvdnpk5LzWlbc3T1mSZZlZnBer0u2Gih5Qd8D2VW9VUy7rMqHdFH7TpsbI8L4f7d5BTy9_aIXO4RiJDJloIpgcIXkRiZ1wE8APi0LP1nqyJ4iIb79CFjgARJKj3B9IzN0I:1tJtqZ:SCckgXsAf3B4PcBrFYidiN67lfl1Vexvc-KT1l9NA-U",
+            "expire_date": "2024-12-21T12:23:43.514Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "5psi5e4nudwmakv80cmrcvcisk5le0pr",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tdCH9:cJtQR87utd1hv8S0IaQmBqbmtx7L1PZdFqVgQdXx5aA",
+            "expire_date": "2025-02-12T17:54:55.857Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "7iws5r95jtyj6rtcg1z8a9z8w4g49739",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tgim3:qPPLRA0tPyWhINC_Rt7sEBA6qVnqT7xmnQzprrQs7rw",
+            "expire_date": "2025-02-22T11:13:23.037Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "7ydky41k1n0agcth3i45pgw5wsvw6k2v",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tcoZt:9l5Vx9q4L5RO026HEeUBG94qky77G_3HTTiVaCOWd8g",
+            "expire_date": "2025-02-11T16:36:41.828Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "axkoai9m04ydsu75h5agbqmk90yukso0",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tOM6m:PCkZP44tCSyHjcW-XG_N47mdhvel9RXWr1hiltTa6gQ",
+            "expire_date": "2025-01-02T19:22:52.241Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "gjkcxbuzrh44vnebapmu3zau5ey2uszq",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1ubH2V:YKYJ2P24FYklfu1EKZ87k7toEtG7JOVMWq1BVJBsML8",
+            "expire_date": "2025-07-28T11:08:07.493Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "h1lnhgu44c1ksdeskn52iovz7ke5mkdm",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tR9eg:0MlnbP6cejGAarVL-6A3E5B_aMS2P-_qsMtp979ZuW0",
+            "expire_date": "2025-01-10T12:41:26.552Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "i2as2002k679gkufmjq76mxmv4zomi5s",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tWfFM:S1iob0uQ0USUTjNb4CTa2zFlY7240AQrcM6ZfdkWJZ0",
+            "expire_date": "2025-01-25T17:26:04.889Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "tcxc7ym4d0ep7d80urym82s3caha8wxy",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tPiWF:RAIEan8w2kwFYHMDSJpncvqKctLeLnKIZgB6ub1CRH4",
+            "expire_date": "2025-01-06T13:30:47.759Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "wh1csl256v3dnwm82d6f8ieegfuymvq1",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tL2OV:Kr93JuMg5HUfLRzQeZMy4d0S6YP0uR-36YIYcqUTgjc",
+            "expire_date": "2024-12-24T15:43:27.392Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "xcm81vg26sbeo5m04k0zqtsylrty2e3n",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1tfIi8:7Y7KkbwBo9SOR4JjDltJ9TKddbxVXBh8curwqlzo9FY",
+            "expire_date": "2025-02-18T13:11:28.776Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "xjv335bx8n377bh5ncpiddvz6fj3ch6l",
+        "fields": {
+            "session_data": ".eJxVjDsOwyAQRO9CHSEwiz8p0_sMaGGX4CQCydhVlLvHSC6SbjTvzbyFw31Lbq-8uoXEVWhx-e08hifnBuiB-V5kKHlbFy-bIk9a5VyIX7fT_TtIWNOxVmAmAm8NWbBHNLrjMSBrBUyTHbThCKpHrwwqtN2ABvromVseoxKfL8rpN4w:1ud90L:ZBOP39lOPKf188ZdTbaNj0-OSpBO5iyfX6uewdUaeng",
+            "expire_date": "2025-08-02T14:57:37.359Z"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 1,
+        "fields": {
+            "title": "соборы",
+            "description": "Культовые места",
+            "slug": "church"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 14,
+        "fields": {
+            "title": "площади",
+            "description": "Знаменитые площади",
+            "slug": "squ"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 15,
+        "fields": {
+            "title": "мосты",
+            "description": "Знаменитые мосты",
+            "slug": "brdj"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 16,
+        "fields": {
+            "title": "здания",
+            "description": "Знаменитые здания",
+            "slug": "bld"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 17,
+        "fields": {
+            "title": "музеи",
+            "description": "Музеи",
+            "slug": "msm"
+        }
+    },
+    {
+        "model": "posts.category",
+        "pk": 18,
+        "fields": {
+            "title": "памятники",
+            "description": "Знаменитые памятники",
+            "slug": "mnm"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 2,
+        "fields": {
+            "title": "Россия",
+            "description": "Самая лучшая в мире страна",
+            "slug": "rus"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 3,
+        "fields": {
+            "title": "Чехия",
+            "description": "Страна в Центральной Европе",
+            "slug": "cze"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 4,
+        "fields": {
+            "title": "Испания",
+            "description": "Страна на Пиренейском полуострове",
+            "slug": "esp"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 5,
+        "fields": {
+            "title": "Турция",
+            "description": "Страна и в Европе и в Азии",
+            "slug": "tur"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 6,
+        "fields": {
+            "title": "Германия",
+            "description": "Локомотив Европы",
+            "slug": "deu"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 7,
+        "fields": {
+            "title": "Италия",
+            "description": "Страна на Апеннинском полуострове",
+            "slug": "ita"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 8,
+        "fields": {
+            "title": "Австрия",
+            "description": "Родина Моцарта и Фрейда",
+            "slug": "aut"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 9,
+        "fields": {
+            "title": "Голландия",
+            "description": "Страна Великих Мореплавателей",
+            "slug": "nld"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 10,
+        "fields": {
+            "title": "Бельгия",
+            "description": "Родина Ван Дамма",
+            "slug": "bel"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 11,
+        "fields": {
+            "title": "Польша",
+            "description": "Родина Сенкевича",
+            "slug": "pol"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 12,
+        "fields": {
+            "title": "Узбекистан",
+            "description": "Родина Улукбека",
+            "slug": "uzb"
+        }
+    },
+    {
+        "model": "posts.country",
+        "pk": 13,
+        "fields": {
+            "title": "Азербайджан",
+            "description": "Страна Огня",
+            "slug": "azb"
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 1,
+        "fields": {
+            "title": "Санкт-Петербург",
+            "description": "Северная столица",
+            "slug": "spb",
+            "country": 2
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 2,
+        "fields": {
+            "title": "Москва",
+            "description": "Столица России.",
+            "slug": "mos",
+            "country": 2
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 3,
+        "fields": {
+            "title": "Прага",
+            "description": "Столица Чехии",
+            "slug": "prg",
+            "country": 3
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 4,
+        "fields": {
+            "title": "Барселона",
+            "description": "Столица Каталонии",
+            "slug": "brs",
+            "country": 4
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 5,
+        "fields": {
+            "title": "Стамбул",
+            "description": "Столица Турции",
+            "slug": "stm",
+            "country": 5
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 6,
+        "fields": {
+            "title": "Владивосток",
+            "description": "Столица Приморья",
+            "slug": "vld",
+            "country": 2
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 7,
+        "fields": {
+            "title": "Мюнхен",
+            "description": "Столица Баварии",
+            "slug": "mnh",
+            "country": 6
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 8,
+        "fields": {
+            "title": "Рим",
+            "description": "Столица Италии",
+            "slug": "rm",
+            "country": 7
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 9,
+        "fields": {
+            "title": "Вена",
+            "description": "Столица Австрии",
+            "slug": "vn",
+            "country": 8
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 10,
+        "fields": {
+            "title": "Амстердам",
+            "description": "Столица Голландии",
+            "slug": "ams",
+            "country": 9
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 11,
+        "fields": {
+            "title": "Брюссель",
+            "description": "Столица Бельгии",
+            "slug": "brl",
+            "country": 10
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 12,
+        "fields": {
+            "title": "Краков",
+            "description": "Столица Древней Польши",
+            "slug": "krk",
+            "country": 11
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 13,
+        "fields": {
+            "title": "Самарканд",
+            "description": "Город в Узбекистане",
+            "slug": "smk",
+            "country": 12
+        }
+    },
+    {
+        "model": "posts.town",
+        "pk": 14,
+        "fields": {
+            "title": "Баку",
+            "description": "Столица Азербайджана",
+            "slug": "baku",
+            "country": 13
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 1,
+        "fields": {
+            "title": "Иссакиевский собор",
+            "text": "Самый большой собор Санкт-Петербурга",
+            "pub_date": "2024-12-19T20:00:07.306Z",
+            "author": 1,
+            "category": 1,
+            "image": "posts_images/isaak_temple.jpeg",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 2,
+        "fields": {
+            "title": "Красная Площадь",
+            "text": "Кра́сная пло́щадь — главная площадь Москвы и России, расположена между Московским Кремлём (к западу)  и Китай-городом (на восток). Выходит к берегу Москвы-реки через пологий Васильевский спуск. Площадь тянется вдоль северо-восточной стены Кремля, от Кремлёвского проезда и проезда Воскресенские Ворота до Васильевского спуска, выходящего к Кремлёвской набережной. На восток от Красной площади отходят Никольская улица, Ильинка и Варварка. Вдоль западной стороны\r\n площади расположен Московский Кремль, вдоль восточной —\r\n  Верхние торговые ряды и Средние торговые ряды.\r\n  Входит в единый ансамбль с Московским Кремлём, однако исторически   является частью Китай-города.",
+            "pub_date": "2025-01-08T20:47:29.537Z",
+            "author": 1,
+            "category": 14,
+            "image": "posts_images/red_square.jpeg",
+            "town": 2,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 3,
+        "fields": {
+            "title": "Карлов Мост",
+            "text": "Находится в Праге",
+            "pub_date": "2025-01-08T20:48:25.266Z",
+            "author": 1,
+            "category": 15,
+            "image": "posts_images/karlov_bridge.jpeg",
+            "town": 3,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 4,
+        "fields": {
+            "title": "Дворцовый мост",
+            "text": "Мост у Эрмитажа",
+            "pub_date": "2025-01-08T20:54:05.080Z",
+            "author": 9,
+            "category": 15,
+            "image": "posts_images/dvor_bridge.jpeg",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 5,
+        "fields": {
+            "title": "Собор Святого Семейства",
+            "text": "Еще не достроен",
+            "pub_date": "2025-01-08T20:56:50.978Z",
+            "author": 9,
+            "category": 1,
+            "image": "posts_images/family_temple.jpeg",
+            "town": 4,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 6,
+        "fields": {
+            "title": "Галатский мост",
+            "text": "Через бухту Золотой рог в Стамбуле",
+            "pub_date": "2025-01-08T20:59:59.151Z",
+            "author": 9,
+            "category": 15,
+            "image": "posts_images/galat_bridge.jpeg",
+            "town": 5,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 7,
+        "fields": {
+            "title": "Золотой мост",
+            "text": "Мост через Золотой Рог во Владивостоке",
+            "pub_date": "2025-01-09T21:28:12.296Z",
+            "author": 10,
+            "category": 15,
+            "image": "posts_images/gold_bridge.jpeg",
+            "town": 6,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 8,
+        "fields": {
+            "title": "Мариен Плац",
+            "text": "Главная площадь Мюнхена",
+            "pub_date": "2025-01-09T21:29:30.319Z",
+            "author": 10,
+            "category": 14,
+            "image": "posts_images/mar_square.jpeg",
+            "town": 7,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 9,
+        "fields": {
+            "title": "Собор Святого Петра",
+            "text": "Главный Католический собор",
+            "pub_date": "2025-01-09T21:30:48.528Z",
+            "author": 10,
+            "category": 1,
+            "image": "posts_images/piter_temple.jpeg",
+            "town": 8,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 10,
+        "fields": {
+            "title": "Собор Василия Блаженного",
+            "text": "Собор на Красной площади",
+            "pub_date": "2025-01-09T21:34:58.393Z",
+            "author": 11,
+            "category": 1,
+            "image": "posts_images/vas_temple.jpeg",
+            "town": 2,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 11,
+        "fields": {
+            "title": "Художественный музей Альбертина",
+            "text": "В Австрии",
+            "pub_date": "2025-01-09T21:36:58.050Z",
+            "author": 11,
+            "category": 17,
+            "image": "posts_images/alb_mus.jpg",
+            "town": 9,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 12,
+        "fields": {
+            "title": "Королевский дворец",
+            "text": "В Нидерландах",
+            "pub_date": "2025-01-09T21:38:07.176Z",
+            "author": 11,
+            "category": 16,
+            "image": "posts_images/king_palace.jpg",
+            "town": 10,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 13,
+        "fields": {
+            "title": "Памятник Эверру т'Секлаесу",
+            "text": "В Бельгии",
+            "pub_date": "2025-01-09T21:41:39.536Z",
+            "author": 12,
+            "category": 18,
+            "image": "posts_images/ever_monument.jpg",
+            "town": 11,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 14,
+        "fields": {
+            "title": "Главная рыночная площадь",
+            "text": "В Польше",
+            "pub_date": "2025-01-09T21:42:50.495Z",
+            "author": 12,
+            "category": 14,
+            "image": "posts_images/krakov_squ.jpg",
+            "town": 12,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 15,
+        "fields": {
+            "title": "Медрессе Тилля-Кари",
+            "text": "Очень красиво!",
+            "pub_date": "2025-01-09T21:47:32.131Z",
+            "author": 12,
+            "category": 16,
+            "image": "posts_images/tillya_kari.JPG",
+            "town": 13,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 16,
+        "fields": {
+            "title": "Казанский кафедральный собор",
+            "text": "Памятник Воинской Славы Одновременно",
+            "pub_date": "2025-02-04T14:06:20.949Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 17,
+        "fields": {
+            "title": "Спас на Крови",
+            "text": "Место гибели императора",
+            "pub_date": "2025-02-04T14:06:20.949Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 18,
+        "fields": {
+            "title": "Смольный собор",
+            "text": "Духовный центр одноименного монастыря",
+            "pub_date": "2025-02-04T14:06:20.949Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 19,
+        "fields": {
+            "title": "Александро-Невская лавра",
+            "text": "Главный монастырь Санкт-Петербурга",
+            "pub_date": "2025-02-04T14:06:20.949Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 20,
+        "fields": {
+            "title": "Спасо-Преображенский собор",
+            "text": "В память о помощи гвардейцев, на месте казарм.",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 21,
+        "fields": {
+            "title": "Петропавловский собор",
+            "text": "Усыпальница Российских императоров",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 22,
+        "fields": {
+            "title": "Никольский-Богоявленский морской собор",
+            "text": "Неразрывно связан с русским флотом",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 23,
+        "fields": {
+            "title": "Собор Федоровской иконы Божией Матери",
+            "text": "Построен к 300-летию дома Романовых",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 24,
+        "fields": {
+            "title": "Владимирский собор",
+            "text": "Отпевали няню А.С. Пушкина",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 25,
+        "fields": {
+            "title": "Храм Успения Богородицы",
+            "text": "Знаменит своим мужским хором",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 26,
+        "fields": {
+            "title": "Чесменская церковь",
+            "text": "Екатерина получила известие о победе",
+            "pub_date": "2025-02-04T14:06:20.950Z",
+            "author": 1,
+            "category": 1,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 27,
+        "fields": {
+            "title": "Аничков мост",
+            "text": "Замечательные кони Клодта",
+            "pub_date": "2025-07-20T11:46:38.963Z",
+            "author": 1,
+            "category": 15,
+            "image": "",
+            "town": 1,
+            "tags": []
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 2,
+        "fields": {
+            "text": "Построен Огюсто Монфераном, строился 40 лет.",
+            "post": 1,
+            "created_at": "2024-12-23T17:57:23.564Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 8,
+        "fields": {
+            "text": "Сердце России.",
+            "post": 2,
+            "created_at": "2025-01-07T20:57:09.783Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 9,
+        "fields": {
+            "text": "Очень круто!",
+            "post": 26,
+            "created_at": "2025-07-07T16:04:23.159Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 10,
+        "fields": {
+            "text": "Сделана очень красиво в готическом стиле!",
+            "post": 26,
+            "created_at": "2025-07-19T15:02:46.295Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 11,
+        "fields": {
+            "text": "На мосту есть очень вкусный рыбный ресторан!",
+            "post": 6,
+            "created_at": "2025-07-19T18:20:31.792Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 12,
+        "fields": {
+            "user": 9,
+            "post": 25
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 14,
+        "fields": {
+            "user": 9,
+            "post": 24
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 15,
+        "fields": {
+            "user": 9,
+            "post": 26
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 16,
+        "fields": {
+            "user": 9,
+            "post": 22
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 17,
+        "fields": {
+            "user": 9,
+            "post": 23
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 18,
+        "fields": {
+            "user": 9,
+            "post": 20
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 19,
+        "fields": {
+            "user": 9,
+            "post": 18
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 20,
+        "fields": {
+            "user": 9,
+            "post": 16
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 21,
+        "fields": {
+            "user": 9,
+            "post": 15
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 22,
+        "fields": {
+            "user": 9,
+            "post": 17
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 23,
+        "fields": {
+            "user": 9,
+            "post": 13
+        }
+    },
+    {
+        "model": "posts.favorite",
+        "pk": 25,
+        "fields": {
+            "user": 1,
+            "post": 24
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 3,
+        "fields": {
+            "text": "Из аэропорта можно доехать на метро. Для этого нужно купить билет в автомате.",
+            "image": "advices_images/biletmatik_Hbha5Ab.jpeg",
+            "country": 5,
+            "created_at": "2025-01-29T15:03:42.459Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 4,
+        "fields": {
+            "text": "Из аэропорта можно доехать на метро. Для этого нужно купить билет в автомате.",
+            "image": "advices_images/biletmatik_A4JN0Lz.jpeg",
+            "country": 5,
+            "created_at": "2025-01-29T15:04:22.204Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 5,
+        "fields": {
+            "text": "Из аэропорта можно доехать на метро. Для этого нужно купить билет в автомате.",
+            "image": "advices_images/biletmatik_8ec6cij.jpeg",
+            "country": 5,
+            "created_at": "2025-01-29T15:08:02.282Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 6,
+        "fields": {
+            "text": "Из аэропорта можно доехать на метро. Для этого нужно купить билет в автомате.",
+            "image": "advices_images/biletmatik_RvBfkqK.jpeg",
+            "country": 5,
+            "created_at": "2025-01-29T15:10:55.906Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 8,
+        "fields": {
+            "text": "Buy rubles.",
+            "image": "advices_images/rubles.jpeg",
+            "country": 2,
+            "created_at": "2025-01-29T15:51:30.231Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 9,
+        "fields": {
+            "text": "Берите рубли!",
+            "image": "advices_images/rubles_BEytslJ.jpeg",
+            "country": 2,
+            "created_at": "2025-02-01T08:42:39.158Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 10,
+        "fields": {
+            "text": "Будьте вежливы!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.346Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 11,
+        "fields": {
+            "text": "Будьте осторожны!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.346Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 12,
+        "fields": {
+            "text": "Не сорите!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 13,
+        "fields": {
+            "text": "Не хамите!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 14,
+        "fields": {
+            "text": "Будьте культурными!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 15,
+        "fields": {
+            "text": "Почаще улыбайтесь!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 16,
+        "fields": {
+            "text": "Больше слушайте, меньше говорите!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 9
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 17,
+        "fields": {
+            "text": "Восхищайтесь страной и ее людьми!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 9
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 18,
+        "fields": {
+            "text": "Не пытайтесь обмануть!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 10
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 19,
+        "fields": {
+            "text": "Не спорьте с полицией!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-01-30T13:27:13.347Z",
+            "author": 11
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 20,
+        "fields": {
+            "text": "Самая лучшая в мире!",
+            "image": "",
+            "country": 2,
+            "created_at": "2025-07-07T16:06:36.598Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "posts.advice",
+        "pk": 21,
+        "fields": {
+            "text": "Заказывайте такси через яндекс выйдя к стоянке такси рядом с аэропортом по прилету!",
+            "image": "",
+            "country": 12,
+            "created_at": "2025-07-19T15:05:07.662Z",
+            "author": 1
+        }
+    },
+    {
+        "model": "users.myuser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$0Lu6VEvgC0c0H0ZEfz55kK$Hpaws1T0IvKFgCtPETGaiwgMdhBFj/ijrjACKy1OZ9s=",
+            "last_login": "2025-07-19T14:57:37.310Z",
+            "is_superuser": true,
+            "username": "gruand69",
+            "first_name": "Andrey",
+            "last_name": "Grushevskiy",
+            "email": "gruand69@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-12-07T12:22:11.325Z",
+            "date_of_birth": "1969-06-24",
+            "image": "users_images/3_OUGcSrg.jpg",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.myuser",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$iqm3btWxHXTAdJWowWo1QQ$qY1b5tt/vLsSpVHeKG7pK9f+GvAl4BcAiDLGDb2HlxI=",
+            "last_login": "2025-02-07T18:03:53.302Z",
+            "is_superuser": false,
+            "username": "grugrig2006",
+            "first_name": "Grigoriy",
+            "last_name": "Grushevskii",
+            "email": "grugrig2006@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-12-09T14:31:47.057Z",
+            "date_of_birth": "2006-06-30",
+            "image": "users_images/i_1.jpg",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.myuser",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$qIg9hg8nzl3AEpLrt9nnnx$3FdkR3sfTX15x3G6ApVUseFEImxBeIfwbCV1nfplc3Q=",
+            "last_login": "2025-01-09T21:26:02.197Z",
+            "is_superuser": false,
+            "username": "gruann72",
+            "first_name": "",
+            "last_name": "",
+            "email": "gruann72@yandex.ru",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-01-09T21:25:53.390Z",
+            "date_of_birth": null,
+            "image": "",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.myuser",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$Izy09YlQj9zZmykNNgPZiR$XAn2h+4ZaOw3WJlVONZJ9ZlHllzx3HSFAynPFeyJeCc=",
+            "last_login": "2025-01-09T21:32:57.483Z",
+            "is_superuser": false,
+            "username": "gruil93",
+            "first_name": "",
+            "last_name": "",
+            "email": "avico@mail.ru",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-01-09T21:32:28.474Z",
+            "date_of_birth": null,
+            "image": "",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.myuser",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$c8pvOZfmFycHAaUhCn0kC1$ya6vIiPjxZWdsgo9fCGNeiYnBU9DtjVa5JwVl/KtmOI=",
+            "last_login": "2025-01-09T21:39:44.998Z",
+            "is_superuser": false,
+            "username": "gruval42",
+            "first_name": "",
+            "last_name": "",
+            "email": "gruval42@yandex.ru",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-01-09T21:39:27.875Z",
+            "date_of_birth": null,
+            "image": "",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

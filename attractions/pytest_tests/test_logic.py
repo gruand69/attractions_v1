@@ -3,9 +3,8 @@ from http import HTTPStatus
 import pytest
 from django.conf import settings
 from django.urls import reverse
-from pytest_django.asserts import assertRedirects
-
 from posts.models import Advice, Comment, Post
+from pytest_django.asserts import assertRedirects
 
 
 def test_user_can_create_post(author_client, post_form_data):
