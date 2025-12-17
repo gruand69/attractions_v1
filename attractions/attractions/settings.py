@@ -160,3 +160,7 @@ USE_L10N = True
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
 OBJECTS_COUNT_ON_PAGES = 10
+
+CSRF_COOKIE_DOMAIN = ".ddns.net"
+
+CSRF_TRUSTED_ORIGINS = ['https://gruand69.ddns.net', 'http://gruand69.ddns.net']
